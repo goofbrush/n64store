@@ -1,8 +1,6 @@
 import { createSignal, createEffect } from "solid-js";
 import Test from "./components/Test"
-import Header from "./components/Header"
-import Products from "./components/Products";
-import Footer from "./components/Footer";
+
 
 
 function App() {
