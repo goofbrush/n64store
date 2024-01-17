@@ -1,0 +1,228 @@
+:root {
+  --dark-text: #ecf0f1;
+  --dark-main1: #283949;
+  --dark-main2: #2e3c47;
+  --dark-main3: #000e1d;
+  --dark-highlight1: #3498db;
+  --dark-highlight2: #2772a3;
+  --dark-icon: 100%;
+  --dark-icon2: 0%;
+
+  --light-text: #2c3e50;
+  --light-main1: #d1d8e0;
+  --light-main2: #d4d4d4;
+  --light-main3: #ffffff;
+  --light-highlight1: #3498db;
+  --light-highlight2: #2772a3;
+  --light-icon: 0%;
+  --light-icon2: 100%;
+}
+body {
+  --text: var(--light-text);
+  --main1: var(--light-main1);
+  --main2: var(--light-main2);
+  --main3: var(--light-main3);
+  --alt1: var(--dark-main1);
+  --alt2: var(--dark-main2);
+  --alt3: var(--dark-main3);
+  --highlight1: var(--light-highlight1);
+  --highlight2: var(--light-highlight2);
+  --icon: var(--light-icon);
+  --icon2: var(--light-icon2);
+}
+body.dark-mode {
+  --text: var(--dark-text);
+  --main1: var(--dark-main1);
+  --main2: var(--dark-main2);
+  --main3: var(--dark-main3);
+  --alt1: var(--light-main1);
+  --alt2: var(--light-main2);
+  --alt3: var(--light-main3);
+  --highlight1: var(--dark-highlight1);
+  --highlight2: var(--dark-highlight2);
+  --icon: var(--dark-icon);
+  --icon2: var(--dark-icon2);
+}
+
+
+:root {
+  --header-spacing: 15px;
+  --product-size: 240px;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat';
+
+  background-color: var(--main1);
+  color: var(--text);
+}
+
+.app-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  user-select: none;
+}
+
+.toggle-button {
+  position: absolute;
+  max-block-size: 15px;
+  right: 0;
+  margin: 27px;
+  filter: brightness(var(--icon));
+  transition: filter 0.2s ease;
+}
+
+.toggle-button:hover {
+  filter: brightness(var(--icon)) drop-shadow(0px 0px 4px var(--alt1) );
+
+}
+
+@media screen and (max-width: 600px) {
+  .toggle-button {
+    display: none;
+  }
+}
+
+
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+.header-right { flex: 1; }
+.header-left { flex: 1; text-align: right; }
+
+
+.header-image {
+  vertical-align: middle;
+  margin: 0 var(--header-spacing);
+  border-radius: 50%;
+  border: 1px solid transparent;
+  transition: box-shadow 0.2s, border 0.2s ease;
+}
+
+.header-image:hover {
+  border: 1px solid var(--highlight1);
+  box-shadow: 0 0 10px var(--highlight2);
+}
+
+.underline {
+  margin: 0 var(--header-spacing);
+
+  text-decoration: none;
+  position: relative;
+
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.underline::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--text);
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease, width 0.2s ease, background-color 0.2s ease;
+}
+
+.underline:hover {
+  color: var(--highlight1);
+}
+
+.underline:hover::before {
+  transform: translateX(-50%) scaleX(1);
+  background-color: var(--highlight1);
+  width: 100%;
+}
+
+
+
+
+
+
+
+.page-body {
+  min-height: 1000px;
+  text-align: center;
+  
+}
+
+
+.grid-container {
+  max-width: 100%;
+  min-width: var(--product-size);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 242px);
+  gap: 10px;
+  justify-content: center;
+}
+
+.product-item {
+  position: relative;
+  border: 1px solid var(--text);
+  text-decoration: none;
+  background-color: var(--main2);
+  color: var(--text);
+  box-shadow: 4px 4px 4px var(--main3);
+  width: var(--product-size);
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s ease;
+}
+
+.product-item:hover {
+  border-color: var(--highlight1);
+  color: var(--highlight1);
+  box-shadow: 0 0 10px var(--highlight2);
+  transform: scale(1.03);
+}
+
+.image-container {
+  height: var(--product-size);
+}
+
+
+.product-item img  {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--product-size);
+  
+  object-fit: cover;
+  border-bottom: 1px solid var(--text);
+
+  opacity: 1;
+  transition: border-bottom-color 0.2s, opacity 0.2s ease;
+}
+
+.product-item:hover img {
+  border-bottom-color: var(--highlight1);
+}
+
+.product-item img.fade-out {
+  opacity: 0;
+}
+
+.product-item img.fade-in {
+  opacity: 1;
+  transition: none;
+}
+
+.product-item img.top { z-index: 2; }
+.product-item img.bot { z-index: 1; }
+
