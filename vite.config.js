@@ -17,4 +17,5 @@ export default defineConfig({
   build: {
     target: 'esnext',
   },
+  base: "https://saram7619.github.io/deploying-vite-project-example/",
 });
