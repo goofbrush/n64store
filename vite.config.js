@@ -17,5 +17,5 @@ export default defineConfig({
   build: {
     target: 'esnext',
   },
-  base: "https://goofbrush.github.io/n64store/",
+  base: "/",
 });
