@@ -28,11 +28,11 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up Environment Variables
-        run: echo FIREBASE_CONFIG=${{ secrets.FIREBASE_CONFIG }} >> $GITHUB_ENV
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
